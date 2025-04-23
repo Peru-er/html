@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change color</title>
+    <style>
+        body {
+            font-family: Baskerville;
+            text-align: center;
+            margin: 70px;
+            background-color: rgb(12, 4, 19);
+            color: white;
+            transition: background-color 0.5s ease;
+        }
+
+        button{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #7b737d;
+            color: white;
+        }
+
+        button:hover{
+            background-color: lightgray;
+            color: #483f3a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color background</h1>
+    <p>Click the button to change the background color</p>
+    <button id="changer">Change color</button>
+    <script>
+        const colors = ["red", "blue", "green", "yellow", "purple"];
+        let currentColorIndex = 0;
+        document.getElementById("changer").addEventListener("click", function () {
+            document.body.style.backgroundColor = colors[currentColorIndex];
+            currentColorIndex++;
+            if (currentColorIndex >= colors.length) {
+                currentColorIndex = 0;
+            }
+        });
+    </script>
+
+</body>
+</html>
