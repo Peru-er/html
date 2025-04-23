@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even or odd</title>
+    <style>
+        body {
+            font-family: Baskerville;
+            text-align: center;
+            margin: 70px;
+            background-color: rgb(12, 4, 19);
+            color: white;
+        }
+
+        button{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #140919;
+            color: white;
+        }
+
+        button:hover{
+            background-color: #23162a;
+            color: white;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Checking numbers from 1 to 10</h1>
+    <button onclick="checkEvenOrOdd()">Check</button>
+    <div class="result" id="output"></div>
+
+    <script>
+        function isEvenOrOdd(number) {
+            if (number % 2 === 0) {
+                return `Number ${number} is even.`;
+            } else {
+                return `Number ${number} is odd.`;
+            }
+        }
+
+        function checkEvenOrOdd() {
+            let output = '';
+            for (let i = 1; i <= 10; i++) {
+                output += isEvenOrOdd(i) + '<br>';
+            }
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
