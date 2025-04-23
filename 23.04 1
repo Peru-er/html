@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+    <style>
+        body {
+            font-family: Baskerville;
+            text-align: center;
+            margin: 70px;
+            background-color: rgb(12, 4, 19);
+            color: white;
+        }
+
+        button{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #140919;
+            color: white;
+        }
+
+        button:hover{
+            background-color: #23162a;
+            color: white;
+        }
+
+        input[type="number"] {
+            padding: 10px 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            margin-right: 10px;
+            background-color: #1f1126;
+            color: white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            background-color: #291734;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate the number.</h1>
+    <input type="number" id="user_value" placeholder="Enter number">
+    <button id="us_button">Calculate</button>
+    <h3 id="result"></h3>
+
+    <script>
+        document.getElementById("us_button").addEventListener("click", function() {
+            const input = document.getElementById("user_value").value;
+            const num = Number(input);
+
+            if (isNaN(num)) {
+                document.getElementById("result").innerText = "Please, enter the correct number.";
+                return;
+            }
+
+            const square = num * num;
+            const cube = num * num * num;
+            const remainder = num % 5;
+
+        document.getElementById("result").innerHTML =
+        `Square: ${square}<br>Cube: ${cube}<br>Remainder of division by 5: ${remainder}`;
+
+        });
+    </script>
+</body>
+</html>
