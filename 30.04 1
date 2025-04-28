@@ -1,0 +1,22 @@
+
+from bs4 import BeautifulSoup
+import requests
+
+url = 'https://books.toscrape.com/'
+response = requests.get(url)
+
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    books_data = []
+    for book in soup.find_all("article", class_="product_pod"):
+        title = book.find("h3").find("a")["title"]
+        rating = book.find("p", class_="star-rating")["class"][1]
+        if rating == 'Five':
+            books_data.append(title)
+
+    with open('top_books.txt', 'w', encoding='utf-8') as file:
+        for idx, title in enumerate(books_data, start=1):
+            file.write(f"{idx}. {title}\n")
+
+else:
+    print(f'Не вдалося завантажити сторінку. Код помилки: {response.status_code}')
