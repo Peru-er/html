@@ -1,0 +1,25 @@
+
+from flask import Flask, render_template
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def main():
+    return 'Welcome)'
+
+@app.route("/about/")
+def about_us():
+    return 'About us.'
+
+@app.route('/services/')
+def services():
+    return 'We provide the following services: ...'
+
+@app.route('/contact/')
+def contacts():
+    return 'To contact us use these numbers: ...'
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=8000)
