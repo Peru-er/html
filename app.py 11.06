@@ -1,0 +1,30 @@
+
+from flask import Flask, jsonify
+import requests
+
+app = Flask(__name__)
+
+@app.route('/crypto', methods=['GET'])
+def get_bitcoin_price():
+    url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,eur,gbp'
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+
+        prices = {
+            'USD': data['bpi']['USD']['rate'],
+            'EUR': data['bpi']['EUR']['rate'],
+            'GBP': data['bpi']['GBP']['rate']
+        }
+
+        return jsonify(prices)
+
+    except requests.RequestException as e:
+        return jsonify({'error': 'Failed to fetch data from Coindesk', 'details': str(e)}), 500
+      
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
